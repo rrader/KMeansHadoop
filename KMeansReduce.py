@@ -13,13 +13,16 @@ for line in sys.stdin:
         avgProperty = [i / sizeOfSameCenter for i in sumOfProperty]
         print('%s'%(avgProperty), end = ', ')
 
-        (last_Center, sumOfProperty) = (center, p)
-        sizeOfSameCenter = 1
+        sumOfProperty = [float(i) for i in center.strip('[] ').split(',')]
+        # (last_Center, sumOfProperty) = (center, p)
+        last_Center = center
+        sumOfProperty =  [(sumOfProperty[i] + p[i]) for i in range(0, len(p))]
+        sizeOfSameCenter = 2
     elif not(last_Center):
         sumOfProperty = [float(i) for i in center.strip('[] ').split(',')]
         last_Center = center
         sumOfProperty =  [(sumOfProperty[i] + p[i]) for i in range(0, len(p))]
-        sizeOfSameCenter = sizeOfSameCenter + 1
+        sizeOfSameCenter = 2 # sizeOfSameCenter + 1
     else:
         sumOfProperty =  [(sumOfProperty[i] + p[i]) for i in range(0, len(p))]
         sizeOfSameCenter = sizeOfSameCenter + 1
