@@ -9,4 +9,4 @@ if __name__ == "__main__":
         val = [float(i) for i in line.strip().split(",")[1:24*7+1]]
         dists = [distanceOfTwoProperty(val, center) for center in centerList]
         center_id, distance = min(enumerate(dists), key=lambda x:x[1])
-        print(center_id)
+        print("%s,%s" % (line.strip().split(",")[0], center_id))
